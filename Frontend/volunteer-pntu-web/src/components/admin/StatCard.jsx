@@ -1,17 +1,20 @@
-export default function StatCard({ title, value, icon, trend, colorClass = "text-blue-600 bg-blue-50" }) {
+// src/components/admin/StatCard.jsx
+export default function StatCard({ title, value, icon, trend, colorClass }) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+    <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
       <div className="flex justify-between items-start">
-        <div>
-          <p className="text-sm font-medium text-gray-500 mb-1">{title}</p>
-          <h3 className="text-2xl font-bold text-gray-800">{value}</h3>
+        <div className="space-y-1">
+          <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{title}</p>
+          <h3 className="text-3xl font-black text-slate-800">{value}</h3>
           {trend && (
-            <p className={`text-xs mt-2 font-bold ${trend.startsWith('+') ? 'text-green-500' : 'text-red-500'}`}>
-              {trend} <span className="text-gray-400 font-normal">so với tháng trước</span>
-            </p>
+            <div className={`inline-flex items-center px-2 py-0.5 rounded-lg text-[10px] font-black mt-2 ${
+              trend.includes('+') ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'
+            }`}>
+              {trend}
+            </div>
           )}
         </div>
-        <div className={`p-3 rounded-xl ${colorClass}`}>
+        <div className={`p-4 rounded-2xl shadow-inner transition-transform group-hover:scale-110 duration-500 ${colorClass}`}>
           {icon}
         </div>
       </div>

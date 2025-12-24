@@ -15,6 +15,7 @@ import ActivityManager from "./pages/admin/ActivityManager";
 import AccountManager from "./pages/admin/AccountManager";
 import HealthDataManager from "./pages/admin/HealthDataManager";
 import ContentManager from "./pages/admin/ContentManager";
+import VolunteerApproval from "./pages/admin/VolunteerApproval";
 
 // Pages Volunteer
 import VolunteerDashboard from "./pages/volunteer/VolunteerDashboard";
@@ -49,6 +50,7 @@ function App() {
             <Route path="/admin/accounts" element={<AccountManager />} />
             <Route path="/admin/health-data" element={<HealthDataManager />} />
             <Route path="/admin/content" element={<ContentManager />} />
+            <Route path="/admin/volunteers" element={<VolunteerApproval />} />
             
             <Route path="/volunteer/dashboard" element={<VolunteerDashboard />} />
             {/* <Route path="/volunteer/AddPatient" element={<AddPatient />} /> */}
