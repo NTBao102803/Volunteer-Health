@@ -6,7 +6,13 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'pnt-navy': '#003366',   // Xanh đậm y khoa
+        'pnt-green': '#008751',  // Xanh lá Đoàn - Hội
+        'pnt-yellow': '#FFD700', // Vàng điểm nhấn
+      }
+    },
   },
   plugins: [],
 }
