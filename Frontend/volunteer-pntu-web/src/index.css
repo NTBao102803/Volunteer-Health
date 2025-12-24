@@ -1,0 +1,60 @@
+/* src/index.css */
+
+/* 1. Import font (PHẢI đặt trước @tailwind) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+/* 2. Các chỉ thị Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3. CSS tùy chỉnh toàn cục (Font chính) */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Các class ẩn scrollbar tùy chỉnh */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.html {
+  scroll-padding-top: 80px; 
+}
+@keyframes scan {
+  0% { top: 10%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 90%; opacity: 0; }
+}
+
+.animate-scan {
+  animation: scan 2s linear infinite;
+  position: absolute;
+}
+/* Ẩn thanh cuộn nhưng vẫn cho phép cuộn ngang trên mobile header */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
