@@ -65,7 +65,7 @@ const Activities = () => {
                 onClick={() => setActiveTab(cat)}
                 className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all border ${
                   activeTab === cat 
-                  ? "bg-pnt-blue border-pnt-blue text-white shadow-lg shadow-pnt-blue/20 scale-105" 
+                  ? "bg-white border-gray-200 text-gray-400 hover:border-pnt-blue hover:text-pnt-blue" 
                   : "bg-white border-gray-200 text-gray-400 hover:border-pnt-blue hover:text-pnt-blue"
                 }`}
               >

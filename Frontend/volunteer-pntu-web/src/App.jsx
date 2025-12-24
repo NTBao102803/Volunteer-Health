@@ -4,6 +4,7 @@ import Home from "./pages/public/Home";
 import Activities from "./pages/public/Activities";
 import ActivityDetail from "./pages/public/ActivityDetail";
 import Skills from "./pages/public/Skills";
+import SkillDetail from "./pages/public/SkillDetail";
 import HealthCheck from "./pages/public/HealthCheck";
 import About from "./pages/public/About";
 
@@ -36,6 +37,7 @@ function App() {
             <Route path="/activities" element={<Activities />} />
             <Route path="/activity/:id" element={<ActivityDetail />} />
             <Route path="/skills" element={<Skills />} />
+            <Route path="/skills/:id" element={<SkillDetail />} />
             <Route path="/health-check" element={<HealthCheck />} />
             <Route path="/about" element={<About />} />
 
