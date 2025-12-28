@@ -15,6 +15,10 @@ export default {
       },
       boxShadow: {
         'soft': '0 20px 25px -5px rgba(0, 51, 102, 0.04), 0 10px 10px -5px rgba(0, 51, 102, 0.02)',
+      },
+      fontFamily: {
+        // Thay thế font mặc định bằng Montserrat
+        sans: ['Montserrat', 'sans-serif'],
       }
     },
   },

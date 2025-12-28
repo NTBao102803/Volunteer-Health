@@ -195,6 +195,8 @@ export const pendingVolunteers = [
 ];
 
 // src/hooks/useDataStore.js
+// src/hooks/useDataStore.js
+
 export const mockAccounts = [
   {
     id: 1,
@@ -204,7 +206,11 @@ export const mockAccounts = [
     role: "Tình nguyện viên",
     statusTNV: "Đã duyệt",
     statusAcc: "Hoạt động",
-    avatar: "https://i.pravatar.cc/150?u=1"
+    avatar: "https://i.pravatar.cc/150?u=1",
+    // Thêm các trường thời gian
+    createdAt: "2025-12-28T08:30:00Z", 
+    createdAtFormatted: "28/12/2025",
+    timeAgo: "1 ngày trước"
   },
   {
     id: 2,
@@ -214,7 +220,10 @@ export const mockAccounts = [
     role: "Sinh viên",
     statusTNV: "Chờ duyệt",
     statusAcc: "Hoạt động",
-    avatar: "https://i.pravatar.cc/150?u=2"
+    avatar: "https://i.pravatar.cc/150?u=2",
+    createdAt: "2025-12-29T09:15:00Z",
+    createdAtFormatted: "Hôm nay",
+    timeAgo: "15 phút trước"
   },
   {
     id: 3,
@@ -224,7 +233,10 @@ export const mockAccounts = [
     role: "Quản trị viên",
     statusTNV: "N/A",
     statusAcc: "Hoạt động",
-    avatar: "https://i.pravatar.cc/150?u=3"
+    avatar: "https://i.pravatar.cc/150?u=3",
+    createdAt: "2024-01-10T14:20:00Z",
+    createdAtFormatted: "10/01/2024",
+    timeAgo: "1 năm trước"
   },
   {
     id: 4,
@@ -234,7 +246,23 @@ export const mockAccounts = [
     role: "Tình nguyện viên",
     statusTNV: "Đã duyệt",
     statusAcc: "Tạm khóa",
-    avatar: "https://i.pravatar.cc/150?u=4"
+    avatar: "https://i.pravatar.cc/150?u=4",
+    createdAt: "2025-12-27T16:45:00Z",
+    createdAtFormatted: "27/12/2025",
+    timeAgo: "2 ngày trước"
+  },
+    {
+    id: 5,
+    name: "Phạm Thị D",
+    email: "phamthid@pnt.edu.vn",
+    mssv: "2021098",
+    role: "Tình nguyện viên",
+    statusTNV: "Đã duyệt",
+    statusAcc: "Tạm khóa",
+    avatar: "https://i.pravatar.cc/150?u=4",
+    createdAt: "2025-12-27T16:45:00Z",
+    createdAtFormatted: "27/12/2025",
+    timeAgo: "2 ngày trước"
   }
 ];
 
