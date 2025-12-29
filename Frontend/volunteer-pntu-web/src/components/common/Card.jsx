@@ -1,109 +1,60 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Thêm useNavigate
+import { useNavigate } from 'react-router-dom';
 import Button from './Button';
+import { HiOutlineClock, HiOutlineMapPin } from 'react-icons/hi2';
 
 export default function Card({ data }) {
-  const navigate = useNavigate(); // Khởi tạo hook điều hướng
-  
-  // Tính % slot đã đầy
+  const navigate = useNavigate();
   const progress = (data.filled / data.slots) * 100;
 
-  // Chuyển đổi nhãn trạng thái sang tiếng Việt
-  const getStatusLabel = (status) => {
-    switch (status) {
-      case 'URGENT': return 'KHẨN CẤP';
-      case 'RECRUITING': return 'ĐANG TUYỂN';
-      case 'COMPLETED': return 'ĐÃ HOÀN THÀNH';
-      case 'OPEN TO ALL': return 'MỞ TỰ DO';
-      default: return status;
-    }
-  };
-
-  // Hàm xử lý khi nhấn vào chi tiết hoặc đăng ký
-  const handleViewDetail = () => {
-    navigate(`/activity/${data.id}`); // Chuyển hướng đến trang chi tiết theo ID
-  };
+  const handleViewDetail = () => navigate(`/activity/${data.id}`);
 
   return (
-    <div className={`bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col h-full ${data.status === 'COMPLETED' ? 'grayscale-[0.8]' : ''}`}>
-      {/* Hình ảnh - Cho phép nhấn vào ảnh để xem chi tiết */}
-      <div 
-        className="relative aspect-[4/3] overflow-hidden cursor-pointer"
-        onClick={handleViewDetail}
-      >
+    <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:shadow-[0_30px_70px_rgba(0,0,0,0.1)] transition-all duration-500 border border-slate-100 group flex flex-col h-full font-sans">
+      <div className="relative aspect-[4/3] overflow-hidden cursor-pointer" onClick={handleViewDetail}>
         <img 
           src={data.image} 
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
           alt={data.title} 
         />
-        
-        {/* Badge trạng thái (Góc trái) */}
-        {data.status && (
-          <span className={`absolute top-3 left-3 px-3 py-1 rounded-md text-[10px] font-bold text-white uppercase shadow-sm ${
-            data.status === 'URGENT' ? 'bg-orange-500' : 
-            data.status === 'RECRUITING' ? 'bg-green-500' : 
-            data.status === 'COMPLETED' ? 'bg-gray-600' : 'bg-blue-500'
-          }`}>
-            {getStatusLabel(data.status)}
-          </span>
-        )}
-        
-        <span className="absolute bottom-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-md text-[10px] font-bold text-blue-600 shadow-sm">
-          {data.tag}
-        </span>
+        <div className="absolute top-4 left-4 flex gap-2">
+            <span className="bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-xl text-[9px] font-black text-pnt-blue uppercase tracking-widest shadow-sm">
+                {data.tag}
+            </span>
+        </div>
       </div>
 
-      <div className="p-5 flex flex-col flex-grow">
-        <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-2">
-          <i className="fas fa-clock"></i> <span>{data.date}</span>
+      <div className="p-8 flex flex-col flex-grow text-pnt-navy">
+        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">
+          <HiOutlineClock size={16} className="text-pnt-blue" /> <span>{data.date}</span>
         </div>
         
-        {/* Tiêu đề - Cho phép nhấn vào để xem chi tiết */}
-        <h3 
-          className="font-bold text-base text-gray-800 mb-4 line-clamp-2 h-12 leading-tight cursor-pointer hover:text-blue-600 transition-colors"
-          onClick={handleViewDetail}
-        >
+        <h3 className="font-black text-xl mb-6 line-clamp-2 leading-snug cursor-pointer hover:text-pnt-blue transition-colors tracking-tight h-14">
           {data.title}
         </h3>
 
-        {/* THANH TIẾN ĐỘ (Nếu chưa hoàn thành) */}
-        {data.status !== 'COMPLETED' ? (
-          <div className="mt-auto">
-            <div className="flex justify-between text-[10px] font-bold mb-1">
-              <span className="text-gray-400 italic">Số lượng đã đăng ký</span>
-              <span className="text-blue-600">{data.filled}/{data.slots}</span>
+        <div className="mt-auto space-y-5">
+            <div>
+                <div className="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2">
+                    <span className="text-slate-400 italic">Tiến độ tuyển</span>
+                    <span className="text-pnt-blue">{data.filled}/{data.slots} SV</span>
+                </div>
+                <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden shadow-inner">
+                    <div 
+                        className={`h-full transition-all duration-1000 ${progress > 80 ? 'bg-gradient-to-r from-orange-400 to-red-500' : 'bg-gradient-to-r from-pnt-green to-emerald-400'}`}
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                </div>
             </div>
-            <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
-              <div 
-                className={`h-full transition-all duration-1000 ${progress > 80 ? 'bg-orange-400' : 'bg-green-400'}`}
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
-            <div className="mt-4 flex gap-2">
-                <Button 
-                  className="w-full py-2 text-xs" 
-                  variant={data.status === 'URGENT' ? 'primary' : 'outline'}
-                  onClick={handleViewDetail} // Thêm sự kiện click
-                >
-                    {data.status === 'URGENT' ? 'Đăng ký ngay' : 'Xem chi tiết'}
-                </Button>
-                <button className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 text-gray-400" title="Lưu lại">
-                  <i className="far fa-bookmark"></i>
-                </button>
-            </div>
-          </div>
-        ) : (
-          <div className="mt-auto">
-             <p className="text-[11px] text-gray-400 italic mb-4">"Cảm ơn {data.filled} tình nguyện viên đã tham gia!"</p>
-             <Button 
-              variant="dark" 
-              className="w-full py-2 text-xs opacity-70"
-              onClick={handleViewDetail} // Thêm sự kiện click
-             >
-                Xem thư viện ảnh
-             </Button>
-          </div>
-        )}
+            
+            <Button 
+                className="w-full py-4 text-[10px] font-black uppercase tracking-[0.2em] rounded-2xl shadow-lg shadow-pnt-blue/10" 
+                variant={data.status === 'URGENT' ? 'primary' : 'outline'}
+                onClick={handleViewDetail}
+            >
+                {data.status === 'URGENT' ? 'Đăng ký ngay' : 'Chi tiết hoạt động'}
+            </Button>
+        </div>
       </div>
     </div>
   );

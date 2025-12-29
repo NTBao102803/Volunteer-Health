@@ -194,9 +194,6 @@ export const pendingVolunteers = [
   }
 ];
 
-// src/hooks/useDataStore.js
-// src/hooks/useDataStore.js
-
 export const mockAccounts = [
   {
     id: 1,
